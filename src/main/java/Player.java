@@ -1,3 +1,4 @@
+
 public class Player {
 
    private String name;
@@ -8,19 +9,33 @@ public class Player {
 
    // constructor
    public Player(String name, String email, boolean isWhite, int rank, int age) {
-      if(name == null || name.isEmpty() || name.isBlank()){
+      if (name == null || name.isEmpty() || name.isBlank()) {
          throw new IllegalArgumentException("The name should not be empty");
-      }else{
+      } else {
          this.name = name;
+      }
+
+      if (email == null || email.isEmpty() || email.isBlank()) {
+         throw new IllegalArgumentException("The email should not be empty");
+      } 
+      
+      if (!email.contains("@") || !email.contains(".")) {
+         throw new IllegalArgumentException("The email should contain '@' and '.'");
+      }else{
          this.email = email;
-         this.isWhite = isWhite;
-         this.rank = rank;
+      }
+
+      if(age < 10 || age > 70){
+         throw new IllegalArgumentException("The age should be > 0 or < 70. Also it's should be ");
+      }else{
          this.age = age;
       }
+      
+      this.isWhite = isWhite;
+      this.rank = rank;
    }
 
    // setter and getters
-
    public String getName() {
       return name;
    }
@@ -50,7 +65,7 @@ public class Player {
    }
 
    public void setRank(int rank) {
-      if(rank < 100 || rank > 3000){
+      if (rank < 100 || rank > 3000) {
          throw new IllegalArgumentException("The rank should be in range of 100 and 3000");
       }
 
@@ -65,16 +80,15 @@ public class Player {
       this.age = age;
    }
 
-
    // toString
    @Override
    public String toString() {
-      return "Player {" +
-          "name='" + name + '\'' +
-          ", email='" + email + '\'' +
-          ", isWhite=" + isWhite +
-          ", rank=" + rank +
-          ", age=" + age +
-          '}';
+      return "Player {"
+              + "name='" + name + '\''
+              + ", email='" + email + '\''
+              + ", isWhite=" + isWhite
+              + ", rank=" + rank
+              + ", age=" + age
+              + '}';
    }
 }
