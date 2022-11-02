@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ChessMain {
@@ -11,7 +12,8 @@ public class ChessMain {
          System.out.println(player);
       }
       // create pieces
-      main.createPieces();
+      HashMap<String, Piece> pieceHashMap = main.createPieces();
+      System.out.println(pieceHashMap);
 
    }
 
@@ -29,12 +31,20 @@ public class ChessMain {
    }
 
    // create pieces
-   public void  createPieces(){
+   public HashMap<String, Piece>  createPieces(){
       King whiteKing = new King(new Spot("h", 7), "white_king", true);
       King blackKing = new King(new Spot("d", 8), "black_king", false);
       Rook whiteRook1 = new Rook(new Spot("a", 7), "white_rook1", true);
       Rook whiteRook2 = new Rook(new Spot("g", 7), "white_rook2", true);
       Knight blackKnight1 = new Knight(new Spot("d", 6), "black_white1", false);
-      System.out.println(whiteKing);
+
+      HashMap<String, Piece> pieceHashMap = new HashMap<>();
+      pieceHashMap.put(whiteKing.getId(),whiteKing);
+      pieceHashMap.put(blackKing.getId(),blackKing);
+      pieceHashMap.put(whiteRook1.getId(),whiteRook1);
+      pieceHashMap.put(whiteRook2.getId(),whiteRook2);
+      pieceHashMap.put(blackKnight1.getId(),blackKnight1);
+
+      return pieceHashMap;
    }
 }
