@@ -15,6 +15,9 @@ public class ChessMain {
       HashMap<String, Piece> pieceHashMap = main.createPieces();
       System.out.println(pieceHashMap);
 
+      // play
+      main.play(players, pieceHashMap);
+
    }
 
    // create players
@@ -36,7 +39,7 @@ public class ChessMain {
       King blackKing = new King(new Spot("d", 8), "black_king", false);
       Rook whiteRook1 = new Rook(new Spot("a", 7), "white_rook1", true);
       Rook whiteRook2 = new Rook(new Spot("g", 7), "white_rook2", true);
-      Knight blackKnight1 = new Knight(new Spot("d", 6), "black_white1", false);
+      Knight blackKnight1 = new Knight(new Spot("d", 6), "black_knight1", false);
 
       HashMap<String, Piece> pieceHashMap = new HashMap<>();
       pieceHashMap.put(whiteKing.getId(),whiteKing);
@@ -46,5 +49,17 @@ public class ChessMain {
       pieceHashMap.put(blackKnight1.getId(),blackKnight1);
 
       return pieceHashMap;
+   }
+
+   // movies
+   public void play(ArrayList<Player> players, HashMap<String, Piece> hashMap){
+      //move 1
+      try {
+         players.get(0).movePiece(hashMap.get("white_rook1"), new Spot("a", 8));
+      } catch (IllegalArgumentException e) {
+         System.out.println("The move is incorrect, please try again");
+      }
+
+      players.get(1).movePiece(hashMap.get("black_knight1"), new Spot("c", 8));
    }
 }

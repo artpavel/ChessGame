@@ -80,6 +80,15 @@ public class Player {
       this.age = age;
    }
 
+   // movies
+   public void movePiece(Piece piece, Spot spot){
+      if(isWhite() != piece.isWhite()) {
+         throw new IllegalArgumentException("Incorrect piece color. Try again");
+      }
+      piece.setSpot(spot);
+      System.out.println("Piece " + piece.getName() + " is moved to: " + spot);
+   }
+
    // toString
    @Override
    public String toString() {
